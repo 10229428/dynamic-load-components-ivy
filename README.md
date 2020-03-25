@@ -1,1 +1,1 @@
-# ivy_dynamic_components
+load components dynamically with ivy
