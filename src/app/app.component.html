@@ -1,0 +1,21 @@
+<jigsaw-root>
+    <div style="text-align:center">
+        <h1 style="padding-bottom: 12px">
+            Welcome to {{title}}!!
+        </h1>
+    </div>
+    <div style="margin: 10px; padding: 10px; border: 1px solid #cccccc; border-radius: 3px;">
+        <j-button (click)="loadBarComponentWithRender()">loadBarComponentWithRender</j-button>
+        <j-button (click)="loadBarComponentWithFactory()">loadBarComponentWithFactory</j-button>
+        <j-button (click)="loadFoo()">Load Foo Module</j-button>
+        <j-button (click)="loadFooByService()">Load Foo By Service</j-button>
+        <j-button (click)="loadAwadeByService()">Load Awade By Service</j-button>
+    </div>
+
+    <div style="margin: 10px; padding: 10px; border: 1px solid #cccccc; border-radius: 3px;">
+        <ng-container #dynamicContainer></ng-container>
+        <div style="color: #CCCCCC">**************************************************************************************</div>
+        <app-bar></app-bar>
+        <app-foo></app-foo>
+    </div>
+</jigsaw-root>
