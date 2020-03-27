@@ -6,6 +6,7 @@ import {
     ComponentRef,
     Injector,
     NgModuleFactory,
+    NgModuleRef,
     OnDestroy,
     ViewChild,
     ViewContainerRef,
@@ -14,6 +15,11 @@ import {
     ɵrenderComponent
 } from '@angular/core';
 import {DynamicComponentService, ICreatedModule} from "./service/dynamic-component.service";
+
+export type CreatedModule = {
+    moduleRef: NgModuleRef<any>;
+    componentRef?: ComponentRef<any>;
+}
 
 @Component({
     selector: 'awade-app',
@@ -88,8 +94,8 @@ export class AppComponent implements OnDestroy {
             });
     }
 
-    loadAwadeByService() {
-        import('./awade/awade.module').then(m => m.AwadeModule)
+    dynamicLoadModule() {
+        import('./dynamic/dynamic.module').then(m => m.DynamicRuntimeModule)
             .then(elementModuleOrFactory => {
                 return this._compiler.compileModuleAsync(elementModuleOrFactory);
             })
@@ -97,12 +103,33 @@ export class AppComponent implements OnDestroy {
                 return this._dynamicComponentService.createAndAttachModuleAsync(compiledModule, this._injector, {vcr: this._dynamicContainer});
             })
             .then(({moduleRef, componentRef}: ICreatedModule) => {
-                console.log(componentRef);
-                componentRef.componentRef.instance.title = 'With Load Service';
-                this._handler = componentRef.componentRef.instance.titleChanges.subscribe($event => {
-                    console.log('titleChanges =====> ', $event);
-                });
+                console.log(componentRef); // componentRef.componentRef.instance
             });
+    }
+
+    dynamicLoadModule111() {
+        import('./dynamic/dynamic.module').then(m => m.DynamicRuntimeModule)
+            .then(elementModuleOrFactory => {
+                return this._compiler.compileModuleAsync(elementModuleOrFactory);
+            })
+            .then((compiledModule: NgModuleFactory<any>) => {
+                const {moduleRef, componentRef} = this.createModule(compiledModule, this._injector, this._dynamicContainer);
+                console.log(moduleRef, componentRef);
+            });
+    }
+
+    createModule(compiledModule: NgModuleFactory<any>, injector: Injector, vcr): CreatedModule {
+        // Create an instance of the module from the moduleFactory
+        const createdModule = compiledModule.create(injector) as NgModuleRef<any>;
+        // Take the bootstrap component from that module.
+        // Using any, as in AngularV8 the InternalNgModuleRef no longer gets exported.
+        const type = (createdModule as any)._bootstrapComponents[0];
+        const factory = createdModule.componentFactoryResolver.resolveComponentFactory(type);
+        const componentRef = vcr.createComponent(factory);
+        return {
+            moduleRef: createdModule,
+            componentRef: componentRef,
+        };
     }
 
     ngOnDestroy(): void {

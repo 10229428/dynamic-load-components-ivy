@@ -6,7 +6,8 @@ import {CountService} from "../service/count-service";
     template: `
         <h5>{{ title }}</h5><span>Foo component loaded!</span>
         <div>
-            <j-button (click)="click()">click</j-button> <span>Click Count : {{count}}</span>
+            <j-button (click)="click()">click</j-button>
+            <span>Click Count : {{count}}</span>
         </div>
     `,
     styles: [`

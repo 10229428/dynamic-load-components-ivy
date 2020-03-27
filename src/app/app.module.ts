@@ -9,6 +9,7 @@ import {AppComponent} from './app.component';
 import {CountService} from "./service/count-service";
 import {DynamicComponentService} from "./service/dynamic-component.service";
 import {MatButtonModule} from "@angular/material/button";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {MatButtonModule} from "@angular/material/button";
         AppComponent
     ],
     imports: [
-        BrowserModule, FormsModule, BrowserAnimationsModule, JigsawModule, TranslateModule.forRoot(), MatButtonModule
+        BrowserModule, FormsModule, BrowserAnimationsModule, JigsawModule, TranslateModule.forRoot(), MatButtonModule,
+        RouterModule.forRoot([])
     ],
     providers: [TranslateService, DynamicComponentService, CountService],
     bootstrap: [AppComponent],

@@ -59,7 +59,6 @@ export class DynamicComponentService {
     createModuleSync(compiledModule: NgModuleFactory<any>, injector: Injector): ICreatedModule {
         // Now that the module is loaded and compiled, create an instance of it.
         const moduleRef = compiledModule.create(injector) as NgModuleRef<any>;
-
         return {
             moduleRef,
         };
