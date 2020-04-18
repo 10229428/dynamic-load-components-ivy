@@ -1,3 +1,22 @@
 j-button {
     margin: 5px;
 }
+
+.box {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+
+    .group {
+        display: inline-flex;
+        flex-direction: column;
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+        margin: 5px;
+
+        label {
+            margin: 5px 5px 0 5px;
+        }
+    }
+}

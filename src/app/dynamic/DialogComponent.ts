@@ -4,8 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Location} from '@angular/common';
-import {DataBus} from "../service/data-bus";
-import {EventBus} from "../service/event-bus";
+import {DataBus, EventBus} from '@awade/uid-sdk';
 
 @Component({
     template: `

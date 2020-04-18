@@ -4,14 +4,12 @@ import {JigsawModule, TranslateHelper} from "@rdkmaster/jigsaw";
 import {AppComponent} from "./AppComponent";
 import {PerfectScrollbarModule} from "ngx-perfect-scrollbar";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
-import {EventBus} from "../service/event-bus";
-import {DataBus} from "../service/data-bus";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {RouterModule} from "@angular/router";
+import {AwadeRepeatModule, DataBus, EventBus} from '@awade/uid-sdk';
 import {DialogComponent} from "./DialogComponent";
 import {RepeatComponent} from "./RepeatComponent";
 import {FloatComponent} from "./FloatComponent";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {RouterModule} from "@angular/router";
-import {AwadeRepeatModule} from "./awade-repeat";
 
 @NgModule({
     imports: [
@@ -44,7 +42,7 @@ export class DynamicRuntimeModule {
             translateService.setTranslation('zh', i18nZhSetter, true);
             translateService.setTranslation('en', i18nEnSetter, true);
 
-            const language = 'en'; // ch
+            const language = 'en';
             TranslateHelper.changeLanguage(this.translateService, language);
             this.dataBus.i18n = {};
             i18n.data.forEach(row => {

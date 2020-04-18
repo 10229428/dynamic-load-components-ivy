@@ -4,19 +4,53 @@
             Welcome to {{title}}!!
         </h1>
     </div>
-    <div style="margin: 10px; padding: 10px; border: 1px solid #cccccc; border-radius: 3px;">
-        <j-button (click)="loadBarComponentWithRender()">loadBarComponentWithRender</j-button>
-        <j-button (click)="loadBarComponentWithFactory()">loadBarComponentWithFactory</j-button>
-        <j-button (click)="loadFoo()">Load Foo Module</j-button>
-        <j-button (click)="loadFooByService()">Load Foo By Service</j-button>
-        <j-button (click)="dynamicLoadModule111()">Dynamic Load Module 111</j-button>
-        <j-button (click)="dynamicLoadModule()">Dynamic Load Module</j-button>
+    <div class="box">
+        <div class="group" style="display: flex;">
+            <label>测试</label>
+            <div>
+                <j-button (click)="loadFooComponentWithRender()">loadFooComponentWithRender</j-button>
+                <j-button (click)="loadFooComponentWithFactory()">loadFooComponentWithFactory</j-button>
+                <j-button (click)="loadFoo()">Load Foo Module</j-button>
+                <j-button (click)="loadFooByService()">Load Foo By Service</j-button>
+                <j-button (click)="dynamicLoadModuleByService()">Dynamic Load Module 111</j-button>
+
+                <j-button (click)="generateChunkTest()" colorType="primary" style="margin-left: 20px;">Generate Chunk Test</j-button>
+
+                <j-button (click)="test()" colorType="primary" style="margin-left: 20px;">test</j-button>
+            </div>
+        </div>
+
+        <div class="group">
+            <label>Dynamic Module</label>
+            <div>
+                <j-button (click)="dynamicLoadModule()" colorType="primary">Dynamic Load</j-button>
+                <j-button (click)="updateDynamicModule()" colorType="primary">Update</j-button>
+                <j-button (click)="generateDynamicModule()" colorType="primary">Generate</j-button>
+            </div>
+        </div>
+
+        <div class="group">
+            <label>Min Module</label>
+            <div>
+                <j-button (click)="dynamicLoadMinModule()" colorType="primary">Dynamic Load</j-button>
+                <j-button (click)="updateMinModule()" colorType="primary">Update</j-button>
+                <j-button (click)="generateMinModule()" colorType="primary">Generate</j-button>
+            </div>
+        </div>
+
+        <div class="group">
+            <label>Test Module</label>
+            <div>
+                <j-button (click)="dynamicLoadTestModule()" colorType="primary">Dynamic Load</j-button>
+                <j-button (click)="updateTestModule()" colorType="primary">Update</j-button>
+                <j-button (click)="generateTestModule()" colorType="primary">Generate</j-button>
+            </div>
+        </div>
     </div>
 
     <div style="margin: 10px; padding: 10px; border: 1px solid #cccccc; border-radius: 3px;">
         <ng-container #dynamicContainer></ng-container>
         <div style="color: #CCCCCC">**************************************************************************************</div>
-        <app-bar></app-bar>
         <app-foo></app-foo>
     </div>
 </jigsaw-root>

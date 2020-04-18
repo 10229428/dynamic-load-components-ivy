@@ -4,11 +4,10 @@ import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {JigsawButton, JigsawTab, JigsawTable, PopupEffect, PopupOptions, PopupService, TableData} from '@rdkmaster/jigsaw';
+import {DataBus, EventBus} from '@awade/uid-sdk';
 import {DialogComponent} from './DialogComponent';
 import {RepeatComponent} from './RepeatComponent';
 import {FloatComponent} from './FloatComponent';
-import {EventBus} from "../service/event-bus";
-import {DataBus} from "../service/data-bus";
 
 @Component({
     selector: 'awade-dynamic-app',

@@ -2,9 +2,7 @@ import {ChangeDetectorRef, Component, NgZone, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
 import {JigsawIcon} from '@rdkmaster/jigsaw';
-import {DataBus} from "../service/data-bus";
-import {EventBus} from "../service/event-bus";
-import {RepeatViewBase} from "./awade-repeat/awade-repeat-item";
+import {DataBus, EventBus, RepeatViewBase} from '@awade/uid-sdk';
 
 @Component({
     template: `

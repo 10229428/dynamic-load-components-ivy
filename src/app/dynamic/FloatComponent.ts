@@ -3,9 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Location} from '@angular/common';
-import {JigsawListLite, TableData} from '@rdkmaster/jigsaw';
-import {DataBus} from "../service/data-bus";
-import {EventBus} from "../service/event-bus";
+import {CommonUtils, JigsawListLite, TableData} from '@rdkmaster/jigsaw';
+import {DataBus, EventBus} from '@awade/uid-sdk';
 
 @Component({
     template: `
@@ -45,6 +44,9 @@ export class FloatComponent {
                 public translateService: TranslateService,
                 public cdr: ChangeDetectorRef) {
 
+        if (CommonUtils.isUndefined(this.dataBus.abc)) {
+            console.log('xxx');
+        }
 
     }
 

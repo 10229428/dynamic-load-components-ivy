@@ -1,16 +1,16 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {MatButtonModule} from "@angular/material/button";
+import {RouterModule} from "@angular/router";
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {JigsawModule} from '@rdkmaster/jigsaw';
+import {AwadeLoadingService, DataBus, EventBus} from '@awade/uid-sdk';
 
 import {AppComponent} from './app.component';
 import {CountService} from "./service/count-service";
 import {DynamicComponentService} from "./service/dynamic-component.service";
-import {MatButtonModule} from "@angular/material/button";
-import {RouterModule} from "@angular/router";
-
 
 @NgModule({
     declarations: [
@@ -20,7 +20,7 @@ import {RouterModule} from "@angular/router";
         BrowserModule, FormsModule, BrowserAnimationsModule, JigsawModule, TranslateModule.forRoot(), MatButtonModule,
         RouterModule.forRoot([])
     ],
-    providers: [TranslateService, DynamicComponentService, CountService],
+    providers: [TranslateService, DynamicComponentService, CountService, EventBus, DataBus, AwadeLoadingService],
     bootstrap: [AppComponent],
     entryComponents: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
